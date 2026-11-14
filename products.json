@@ -28,17 +28,23 @@
   ],
   "products": [
     {
-      "id": "p0",
-      "ar": "خاتم دهب بفص",
-      "en": "Gold stone ring",
+      "id": "p1794691565003",
+      "code": "CK-2F3KQ",
+      "ar": "خاتم حلو",
+      "en": "Neklase",
+      "price": null,
       "cat": "Rings",
       "mat": "gold",
-      "price": 180,
       "status": "in",
       "hidden": false,
-      "img": "",
-      "code": "CK-YHSCY",
-      "imgs": []
+      "imgs": [
+        "images/p1794691565003-1794691573967-0.jpg",
+        "images/p1794691565003-1794691575734-1.jpg",
+        "images/p1794691565003-1794691577956-2.jpg",
+        "images/p1794691565003-1794691580003-3.jpg",
+        "images/p1794691565003-1794691581642-4.jpg"
+      ],
+      "img": "images/p1794691565003-1794691573967-0.jpg"
     },
     {
       "id": "p1",
