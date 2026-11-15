@@ -33,6 +33,26 @@
   ],
   "products": [
     {
+      "id": "p1794781823383",
+      "code": "CK-C29CH",
+      "ar": "سلاسل سيمبل",
+      "en": "Simple Necklace",
+      "price": 120,
+      "showPrice": true,
+      "cat": "Necklaces",
+      "mat": "steel",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794781823383-1794781824847-0.jpg",
+        "images/p1794781823383-1794781827449-1.jpg",
+        "images/p1794781823383-1794781829724-2.jpg",
+        "images/p1794781823383-1794781831682-3.jpg",
+        "images/p1794781823383-1794781833624-4.jpg"
+      ],
+      "img": "images/p1794781823383-1794781824847-0.jpg"
+    },
+    {
       "id": "p1794781569859",
       "code": "CK-DSLP9",
       "ar": "سلاسل سيمبل",
