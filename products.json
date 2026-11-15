@@ -33,6 +33,23 @@
   ],
   "products": [
     {
+      "id": "p1794782542325",
+      "code": "CK-Z7J84",
+      "ar": "سلسلة زركون",
+      "en": "Zircon Necklace",
+      "price": 150,
+      "showPrice": true,
+      "cat": "Necklaces",
+      "mat": "gold",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794782542325-1794782544448-0.jpg",
+        "images/p1794782542325-1794782546628-1.jpg"
+      ],
+      "img": "images/p1794782542325-1794782544448-0.jpg"
+    },
+    {
       "id": "p1794782377129",
       "code": "CK-EKNJ5",
       "ar": "كوليهات زركون",
