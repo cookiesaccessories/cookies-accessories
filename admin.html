@@ -140,10 +140,12 @@ let orders=[],oerr="",okey="";try{okey=localStorage.getItem("ck_okey")||""}catch
 const money=n=>(n||0).toLocaleString("en-US")+" جنيه";
 async function loadOrders(quiet){
   if(OU&&okey){
-    try{const r=await fetch(OU+"?action=list&key="+encodeURIComponent(okey)),j=await r.json();
-      if(!j.ok){if(j.error==="key"){okey="";try{localStorage.removeItem("ck_okey")}catch(e){}oerr="مفتاح الطلبات غلط. اكتب المفتاح الصح وجرّب تاني"}else oerr="السكريبت رجّع خطأ";orders=[]}
+    try{let tx="",j=null;
+      try{const r=await fetch(OU+"?action=list&key="+encodeURIComponent(okey));tx=await r.text()}catch(e){throw new Error("net")}
+      try{j=JSON.parse(tx)}catch(e){throw new Error("bad:"+tx.replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim().slice(0,180))}
+      if(!j.ok){if(j.error==="key"){okey="";try{localStorage.removeItem("ck_okey")}catch(e){}oerr="مفتاح الطلبات غلط. اكتب المفتاح الصح وجرّب تاني"}else oerr="خطأ من السكريبت: "+(j.msg||j.error||"");orders=[]}
       else{if(quiet&&j.orders.length>orders.length)toast("🔔 وصل طلب جديد");orders=j.orders;oerr=""}
-    }catch(e){oerr="مش قادر أوصل لسكريبت الطلبات. اتأكد من ORDERS_URL ومن إن النشر Anyone"}
+    }catch(e){oerr=e.message==="net"?"المتصفح مقدرش يوصل للرابط. راجع إن ORDERS_URL بينتهي بـ /exec وإن النشر Anyone":(e.message.indexOf("bad:")===0?"الرابط رد بصفحة مش بيانات (غالبًا صلاحيات أو السكريبت مش مربوط بالشيت). الرد: "+e.message.slice(4):"خطأ غير متوقع")}
   }
   drawOrders()}
 function saveKey(){okey=$("#ok").value.trim();oerr="";if(!okey){oerr="اكتب المفتاح";drawOrders();return}try{localStorage.setItem("ck_okey",okey)}catch(e){}loadOrders()}
