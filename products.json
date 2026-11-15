@@ -33,6 +33,25 @@
   ],
   "products": [
     {
+      "id": "p1794781277566",
+      "code": "CK-99VGM",
+      "ar": "اساور",
+      "en": "bracelets",
+      "price": 170,
+      "showPrice": true,
+      "cat": "Bracelets",
+      "mat": "steel",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794781277566-1794781281064-0.jpg",
+        "images/p1794781277566-1794781283120-1.jpg",
+        "images/p1794781277566-1794781284964-2.jpg",
+        "images/p1794781277566-1794781286704-3.jpg"
+      ],
+      "img": "images/p1794781277566-1794781281064-0.jpg"
+    },
+    {
       "id": "p1794780940947",
       "code": "CK-VG98X",
       "ar": "حلقان طويلة",
