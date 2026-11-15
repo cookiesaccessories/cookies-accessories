@@ -33,6 +33,26 @@
   ],
   "products": [
     {
+      "id": "p1794781451455",
+      "code": "CK-BLHZC",
+      "ar": "اساور تعبان",
+      "en": "Snake bracelets",
+      "price": 160,
+      "showPrice": true,
+      "cat": "Bracelets",
+      "mat": "gold",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794781451455-1794781454120-0.jpg",
+        "images/p1794781451455-1794781456078-1.jpg",
+        "images/p1794781451455-1794781458227-2.jpg",
+        "images/p1794781451455-1794781459860-3.jpg",
+        "images/p1794781451455-1794781461606-4.jpg"
+      ],
+      "img": "images/p1794781451455-1794781454120-0.jpg"
+    },
+    {
       "id": "p1794781277566",
       "code": "CK-99VGM",
       "ar": "اساور",
