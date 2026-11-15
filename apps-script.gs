@@ -2,7 +2,7 @@
 // 1) افتح Google Sheet جديد، ثم Extensions > Apps Script، والصق الكود ده.
 // 2) غيّر ADMIN_KEY لكلمة سر طويلة (هتكتبها في صفحة الأدمن).
 // 3) Deploy > New deployment > Web app. Execute as: Me. Who has access: Anyone. انسخ الرابط في config.js (ORDERS_URL).
-var ADMIN_KEY = "CHANGE_ME_TO_A_LONG_SECRET";
+var ADMIN_KEY = "cookiesaccessoriestalabat";
 var STATUSES = ["pending", "done", "cancelled"];
 
 function sheet_() {
