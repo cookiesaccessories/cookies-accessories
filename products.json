@@ -28,6 +28,26 @@
   ],
   "products": [
     {
+      "id": "p1794780605499",
+      "code": "CK-EFNBS",
+      "ar": "انسيالات فصوص",
+      "en": "gemstone bracelets",
+      "price": 150,
+      "showPrice": true,
+      "cat": "Bracelets",
+      "mat": "steel",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794780605499-1794780606430-0.jpg",
+        "images/p1794780605499-1794780608411-1.jpg",
+        "images/p1794780605499-1794780610150-2.jpg",
+        "images/p1794780605499-1794780611876-3.jpg",
+        "images/p1794780605499-1794780613733-4.jpg"
+      ],
+      "img": "images/p1794780605499-1794780606430-0.jpg"
+    },
+    {
       "id": "p1794780561947",
       "code": "CK-U2KY5",
       "ar": "انسيالات فصوص",
