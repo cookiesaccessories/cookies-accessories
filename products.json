@@ -33,6 +33,25 @@
   ],
   "products": [
     {
+      "id": "p1794782174738",
+      "code": "CK-XV2VC",
+      "ar": "طقم حلقان بريمة",
+      "en": "Earring set",
+      "price": 140,
+      "showPrice": true,
+      "cat": "Earrings",
+      "mat": "gold",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794782174738-1794782175774-0.jpg",
+        "images/p1794782174738-1794782177658-1.jpg",
+        "images/p1794782174738-1794782179531-2.jpg",
+        "images/p1794782174738-1794782181380-3.jpg"
+      ],
+      "img": "images/p1794782174738-1794782175774-0.jpg"
+    },
+    {
       "id": "p1794782095802",
       "code": "CK-35QAQ",
       "ar": "طقم حلقان بريمة",
