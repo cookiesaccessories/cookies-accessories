@@ -26,5 +26,23 @@
       "en": "Anklets"
     }
   ],
-  "products": []
+  "products": [
+    {
+      "id": "p1794779956250",
+      "code": "CK-3PN8K",
+      "ar": "سلسلة العذراء والصليب",
+      "en": "The Virgin and the Cross Necklace",
+      "price": 120,
+      "showPrice": true,
+      "cat": "Necklaces",
+      "mat": "steel",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794779956250-1794779957500-0.jpg",
+        "images/p1794779956250-1794779959406-1.jpg"
+      ],
+      "img": "images/p1794779956250-1794779957500-0.jpg"
+    }
+  ]
 }
