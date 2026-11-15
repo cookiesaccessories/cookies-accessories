@@ -33,6 +33,25 @@
   ],
   "products": [
     {
+      "id": "p1794782658114",
+      "code": "CK-6CPYV",
+      "ar": "سلسلة زركون",
+      "en": "Zircon Neckla",
+      "price": 170,
+      "showPrice": true,
+      "cat": "Necklaces",
+      "mat": "gold",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794782658114-1794782659280-0.jpg",
+        "images/p1794782658114-1794782661131-1.jpg",
+        "images/p1794782658114-1794782663084-2.jpg",
+        "images/p1794782658114-1794782665009-3.jpg"
+      ],
+      "img": "images/p1794782658114-1794782659280-0.jpg"
+    },
+    {
       "id": "p1794782542325",
       "code": "CK-Z7J84",
       "ar": "سلسلة زركون",
