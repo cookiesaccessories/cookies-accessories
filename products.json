@@ -33,6 +33,24 @@
   ],
   "products": [
     {
+      "id": "p1794783157249",
+      "code": "CK-6ZS6M",
+      "ar": "سلسلة  زركون  بنت أبوها",
+      "en": "Zircon Bint Abuha Necklace",
+      "price": 110,
+      "showPrice": true,
+      "cat": "Necklaces",
+      "mat": "gold",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794783157249-1794783158678-0.jpg",
+        "images/p1794783157249-1794783162764-1.jpg",
+        "images/p1794783157249-1794783164515-2.jpg"
+      ],
+      "img": "images/p1794783157249-1794783158678-0.jpg"
+    },
+    {
       "id": "p1794783004989",
       "code": "CK-VUBKT",
       "ar": "سلسلة زركون",
