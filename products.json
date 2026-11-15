@@ -33,6 +33,24 @@
   ],
   "products": [
     {
+      "id": "p1794782377129",
+      "code": "CK-EKNJ5",
+      "ar": "كوليهات زركون",
+      "en": "Zircon necklaces",
+      "price": 220,
+      "showPrice": true,
+      "cat": "Necklaces",
+      "mat": "gold",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794782377129-1794782418960-0.jpg",
+        "images/p1794782377129-1794782420888-1.jpg",
+        "images/p1794782377129-1794782422832-2.jpg"
+      ],
+      "img": "images/p1794782377129-1794782418960-0.jpg"
+    },
+    {
       "id": "p1794782174738",
       "code": "CK-XV2VC",
       "ar": "طقم حلقان بريمة",
