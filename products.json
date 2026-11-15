@@ -33,6 +33,27 @@
   ],
   "products": [
     {
+      "id": "p1794783004989",
+      "code": "CK-VUBKT",
+      "ar": "سلسلة زركون",
+      "en": "Zircon Necklace",
+      "price": 180,
+      "showPrice": true,
+      "cat": "Necklaces",
+      "mat": "gold",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794783004989-1794783006177-0.jpg",
+        "images/p1794783004989-1794783008561-1.jpg",
+        "images/p1794783004989-1794783010492-2.jpg",
+        "images/p1794783004989-1794783012348-3.jpg",
+        "images/p1794783004989-1794783014402-4.jpg",
+        "images/p1794783004989-1794783016138-5.jpg"
+      ],
+      "img": "images/p1794783004989-1794783006177-0.jpg"
+    },
+    {
       "id": "p1794782911182",
       "code": "CK-UBG6B",
       "ar": "سلاسل زركون",
