@@ -52,6 +52,12 @@ main{padding:26px 30px 120px;max-width:1150px;width:100%}
 .empty{text-align:center;color:var(--mut);padding:36px}
 @media(max-width:860px){.shell{grid-template-columns:1fr}.side{position:fixed;top:auto;bottom:0;inset-inline:0;height:auto;flex-direction:row;padding:8px;z-index:45;border-inline-end:0;border-top:1px solid var(--line);padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))}.brand,.sp,.side .hm{display:none}.nv{flex-direction:column;gap:2px;padding:6px 4px;font-size:.72rem;text-align:center;justify-content:center}main{padding:18px 14px 150px}.save{bottom:84px}.pr{grid-template-columns:52px 1fr}.pr .acts{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.bars{display:flex;align-items:flex-end;gap:5px;height:140px;margin-top:12px}
+.bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:.68rem;color:var(--mut);gap:3px}
+.bar i{display:block;width:100%;background:var(--grad);border-radius:6px 6px 0 0;min-height:2px;transition:height .6s}
+.tb{width:100%;border-collapse:collapse;font-size:.9rem}.tb th{color:var(--mut);font-weight:600;text-align:start;padding:6px 8px}.tb td{padding:8px;border-top:1px solid var(--line)}
+.tb .rk{width:34px;font-weight:800;color:var(--g2)}
+.tbw{overflow-x:auto}
 </style>
 </head>
 <body>
@@ -111,10 +117,10 @@ function rmImg(i){pf.imgs.splice(i,1);$("#ig").innerHTML=igHtml()}
 function resize(f){return new Promise(res=>{const i=new Image();i.onload=()=>{const k=Math.min(1,900/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*k;c.height=i.height*k;c.getContext("2d").drawImage(i,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",.82))};i.src=URL.createObjectURL(f)})}
 async function pick(el){for(const f of [...el.files]){if(pf.imgs.length>=8){toast("أقصى عدد 8 صور");break}pf.imgs.push(await resize(f))}el.value="";$("#ig").innerHTML=igHtml()}
 function saveP(){
-  const ar=$("#fa").value.trim(),en=$("#fe").value.trim(),pv=$("#fp").value.trim(),price=pv===""?null:+pv,cat=$("#fc").value,mat=$("#fm").value,status=$("#fs").value,hidden=$("#fh").checked,hp=$("#fsp").checked;
+  const ar=$("#fa").value.trim(),en=$("#fe").value.trim(),pv=$("#fp").value.trim(),price=pv===""?null:+pv,cat=$("#fc").value,mat=$("#fm").value,status=$("#fs").value,hidden=$("#fh").checked,hp=!$("#fsp").checked;
   if(!ar||!en){toast("اكتب الاسم بالعربي والإنجليزي");return}if(!cat){toast("اختار القسم الأول");return}
   if(price!==null&&!(price>0)){toast("السعر لازم يكون رقم أكبر من صفر، أو سيبه فاضي");return}
-  if(hp&&price===null){toast("اكتب السعر الأول (هيتسجل عندك بس ومش هيظهر في الموقع)");return}
+  if(hp&&price===null){toast("اكتب السعر الأول: هيتسجل عندك بس ومش هيظهر في الموقع");return}
   const imgs=pf.imgs,img=imgs[0]||"",showPrice=!hp;
   if(editing)Object.assign(products.find(x=>x.id===editing),{ar,en,price,showPrice,cat,mat,status,hidden,imgs,img});
   else products.unshift({id:"p"+Date.now(),code:newCode(),ar,en,price,showPrice,cat,mat,status,hidden,imgs,img});
@@ -126,15 +132,17 @@ function pform(){const e=pf;return `<div class="ov"><div class="sheet"><h2>${edi
   <input id="fa" placeholder="الاسم بالعربي" value="${esc(e.ar)}"><input id="fe" placeholder="Name in English" value="${esc(e.en)}" dir="ltr">
   <select id="fc">${cats.map(c=>`<option value="${esc(c.id)}" ${c.id===e.cat?"selected":""}>${esc(c.ar)}</option>`).join("")||'<option value="">أضف قسم الأول</option>'}</select>
   <select id="fm">${Object.entries(MT).map(([k,v])=>`<option value="${k}" ${k===e.mat?"selected":""}>${v}</option>`).join("")}</select>
-  <input id="fp" type="number" min="0" placeholder="السعر بالجنيه (اختياري)" value="${e.price==null?"":esc(e.price)}"><label class="mut" style="display:flex;gap:8px;align-items:center"><input id="fsp" type="checkbox" style="width:auto" ${e.showPrice===false?"checked":""}> السعر مش هيتحدد: ما تعرضوش في الموقع</label>
-  <p class="mut" style="margin-top:-4px">السعر هيتسجل عندك في الطلبات والحسابات، والموقع هيكتب "السعر عند السؤال". لو سيبت السعر فاضي برضو هيظهر "السعر عند السؤال". تنبيه: رقم السعر بيتخزن في ملف products.json على جيت هاب، فأي حد يفتح الملف نفسه يقدر يشوفه.</p>
+  <input id="fp" type="number" min="0" placeholder="السعر بالجنيه (اختياري)" value="${e.price==null?"":esc(e.price)}"><div style="background:var(--bg2);border:1px solid var(--g1);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px">
+    <label style="display:flex;gap:10px;align-items:center;cursor:pointer;font-weight:700"><input id="fsp" type="checkbox" style="width:auto" ${e.showPrice===false?"":"checked"}> إظهار السعر في الموقع</label>
+    <p class="mut">لو شلت العلامة: الموقع هيكتب "السعر عند السؤال" والعميل مش هيشوف الرقم، لكن السعر اللي كتبته فوق بيتسجل عندك في الطلبات والحسابات.</p>
+    <p class="mut" style="font-size:.8rem">تنبيه: السعر بيتخزن في ملف products.json على جيت هاب، فمش مخفي تقنيًا عن اللي يفتح الملف نفسه.</p></div>
   <select id="fs">${Object.entries(ST).map(([k,v])=>`<option value="${k}" ${k===e.status?"selected":""}>${v}</option>`).join("")}</select>
   <input type="file" accept="image/*" multiple onchange="pick(this)"><div id="ig" class="acts">${igHtml()}</div><p class="mut" style="margin-top:-4px">أول صورة هي الأساسية، ولحد 8 صور للمنتج.</p>
   <label class="mut" style="display:flex;gap:8px;align-items:center"><input id="fh" type="checkbox" style="width:auto" ${e.hidden?"checked":""}> مخفي عن الموقع</label>
   <div class="acts"><button class="btn" onclick="saveP()">${editing?"تحديث":"إضافة"}</button><button class="btn o" onclick="closeP()">إلغاء</button></div></div></div>`}
 function plist(){
   const q=pq.toLowerCase(),l=products.filter(p=>(pc==="all"||p.cat===pc)&&(p.ar+" "+p.en+" "+(p.code||"")).toLowerCase().includes(q));
-  $("#pl").innerHTML=l.map((p,i)=>{const im=(p.imgs||[])[0];return `<div class="pr ${p.hidden?"off":""}" style="animation-delay:${Math.min(i,10)*30}ms">${im?`<img class="im" src="${esc(src(im))}" alt="">`:'<div class="im">💍</div>'}<div><b>${esc(p.ar)}</b> <span class="mut lat" dir="ltr">${esc(p.en)}</span><div class="mut"><span class="tag ${p.mat}">${MT[p.mat]||""}</span> ${esc((catOf(p.cat)||{ar:"بدون قسم"}).ar)} — ${p.price?p.price+" جنيه"+(p.showPrice===false?" (مخفي عن الموقع)":""):"بدون سعر"}${p.hidden?" — مخفي":""} — <span class="lat" dir="ltr">${esc(p.code||"")}</span>${(p.imgs||[]).length>1?" — "+p.imgs.length+" صور":""}</div></div>
+  $("#pl").innerHTML=l.map((p,i)=>{const im=(p.imgs||[])[0];return `<div class="pr ${p.hidden?"off":""}" style="animation-delay:${Math.min(i,10)*30}ms">${im?`<img class="im" src="${esc(src(im))}" alt="">`:'<div class="im">💍</div>'}<div><b>${esc(p.ar)}</b> <span class="mut lat" dir="ltr">${esc(p.en)}</span><div class="mut"><span class="tag ${p.mat}">${MT[p.mat]||""}</span> ${esc((catOf(p.cat)||{ar:"بدون قسم"}).ar)} — ${p.price?p.price+" جنيه"+(p.showPrice===false?' <span class="tag" style="background:#ef4444;color:#fff">السعر مخفي عن الموقع</span>':""):"بدون سعر"}${p.hidden?" — مخفي":""} — <span class="lat" dir="ltr">${esc(p.code||"")}</span>${(p.imgs||[]).length>1?" — "+p.imgs.length+" صور":""}</div></div>
   <div class="acts"><select data-i="${esc(p.id)}" onchange="setSt(this.dataset.i,this.value)">${Object.entries(ST).map(([k,v])=>`<option value="${k}" ${k===p.status?"selected":""}>${v}</option>`).join("")}</select><button class="btn o sm" data-i="${esc(p.id)}" onclick="openP(this.dataset.i)">تعديل</button><button class="btn r sm" data-i="${esc(p.id)}" onclick="del(this.dataset.i)">حذف</button></div></div>`}).join("")||'<div class="empty">لا توجد منتجات</div>'}
 
 /* orders */
@@ -171,6 +179,47 @@ function drawOrders(){
   <div style="margin:8px 0">${o.items.map(i=>`<div>• ${esc(i.ar||i.en)} <span class="mut lat" dir="ltr">(${esc(i.c)})</span> × ${i.q} = ${i.p?money(i.q*i.p)+(i.h?" (سعر غير معلن للعميل)":""):"السعر لم يتحدد"}</div>`).join("")}</div>
   <div class="acts"><b>${money(o.total)}${o.items.some(i=>!i.p)?" + أصناف بدون سعر":""}</b><select data-c="${esc(o.code)}" onchange="setOS(this.dataset.c,this.value)">${Object.entries(OS).map(([k,v])=>`<option value="${k}" ${k===o.status?"selected":""}>${v}</option>`).join("")}</select></div></div>`).join("")||'<div class="empty">لسه مفيش طلبات</div>'}`}
 
+/* stats */
+let vst=null,verr="";
+async function loadStats(){
+  if(OU&&okey){
+    await loadOrders(false);
+    try{
+      const r=await fetch(OU+"?action=stats&key="+encodeURIComponent(okey)),tx=await r.text();let j=null;
+      try{j=JSON.parse(tx)}catch(e){}
+      if(j&&j.ok&&typeof j.total==="number"){vst=j;verr=""}
+      else if(j&&j.error==="key")verr="مفتاح الطلبات غلط";
+      else{vst=null;verr="السكريبت محتاج تحديث: انسخ apps-script.gs الجديد وانشره (Deploy ثم Manage deployments ثم New version)"}
+    }catch(e){vst=null;verr="مش قادر أجيب إحصائيات الزيارات"}
+  }
+  drawStats()}
+const nph=s=>{let d=String(s).replace(/\D/g,"");if(d.startsWith("20")&&d.length===12)d="0"+d.slice(2);return d};
+function drawStats(){
+  const b=$("#sb");if(!b)return;
+  if(!OU||!okey){b.innerHTML=`<div class="pn"><h3>🔐 ربط الطلبات</h3><p class="mut" style="margin-bottom:10px">الإحصائيات بتتحسب من الطلبات والزيارات، فلازم تربط الطلبات الأول من تبويب الطلبات.</p><button class="btn" onclick="go('orders')">فتح الطلبات</button></div>`;return}
+  const cust={};
+  orders.forEach(o=>{const k=nph(o.phone),c=cust[k]||(cust[k]={name:o.name,phone:k,n:0,done:0,canc:0,spent:0,last:""});
+    if(!c.last||o.createdAt>c.last){c.last=o.createdAt;c.name=o.name}
+    if(o.status==="cancelled")c.canc++;else{c.n++;c.spent+=o.total;if(o.status==="done")c.done++}});
+  const list=Object.values(cust),buyers=list.filter(c=>c.n>0).sort((x,y)=>y.n-x.n||y.spent-x.spent).slice(0,15),cancellers=list.filter(c=>c.canc>0).sort((x,y)=>y.canc-x.canc);
+  const cnt=k=>orders.filter(o=>o.status===k).length,total=orders.length,canc=cnt("cancelled");
+  const fd=s=>{const d=new Date(s);return isNaN(d)?"":d.toLocaleDateString("ar-EG")};
+  const v=vst,max=v?Math.max(1,...v.daily.map(x=>x.n)):1;
+  const card=(l,n,hot)=>`<div class="st ${hot?"hot":""}"><small>${l}</small><b>${n}</b></div>`;
+  b.innerHTML=`${verr?`<div class="pn" style="color:var(--bad)">${esc(verr)}</div>`:""}
+  <div class="top" style="margin-bottom:10px"><h3>👀 الزيارات</h3><button class="btn o sm" onclick="loadStats()">🔄 تحديث</button></div>
+  ${v?`<div class="stats">${card("زوار النهاردة",v.today,1)}${card("آخر 7 أيام",v.d7)}${card("آخر 30 يوم",v.d30)}${card("إجمالي الزوار",v.total)}</div>
+  <div class="pn"><h3>زوار آخر 14 يوم</h3><div class="bars">${v.daily.map(x=>`<div class="bar"><span>${x.n}</span><i style="height:${Math.round(x.n/max*100)}%"></i><span>${esc(x.d.slice(5).replace("-","/"))}</span></div>`).join("")}</div>
+  <p class="mut" style="margin-top:8px">الزائر هو متصفح/جهاز واحد (مش شخص بالظبط)، وبيتحسب مرة في اليوم. جهازك إنت مش بيتحسب.</p></div>`:""}
+  <h3 style="margin:18px 0 10px">🛒 الشراء والإلغاء</h3>
+  <div class="stats">${card("إجمالي الطلبات",total)}${card("تمت",cnt("done"))}${card("جاري عمل الطلبية",cnt("pending"))}${card("اتلغت",canc)}
+  ${card("نسبة الإلغاء",total?Math.round(canc/total*100)+"%":"0%")}${card("عملاء اشتروا",list.filter(c=>c.n>0).length)}${card("عملاء لغوا طلب",cancellers.length)}${v&&v.total?card("نسبة الشراء من الزوار",(list.length/v.total*100).toFixed(1)+"%"):""}</div>
+  <div class="pn"><h3>🏆 أكتر العملاء شراءً</h3>${buyers.length?`<div class="tbw"><table class="tb"><tr><th></th><th>الاسم</th><th>الموبايل</th><th>الطلبات</th><th>الإجمالي</th><th>لغى</th><th>آخر طلب</th></tr>
+  ${buyers.map((c,i)=>`<tr><td class="rk">${i+1}</td><td>${esc(c.name)}</td><td dir="ltr" style="text-align:end">${esc(c.phone)}</td><td>${c.n}</td><td>${money(c.spent)}</td><td style="color:${c.canc?"var(--bad)":"var(--mut)"}">${c.canc}</td><td class="mut">${esc(fd(c.last))}</td></tr>`).join("")}</table></div>
+  <p class="mut" style="margin-top:8px">الترتيب بعدد الطلبات (من غير الملغي)، وبعدها بإجمالي الفلوس. العميل بيتعرف برقم موبايله.</p>`:'<div class="empty">لسه مفيش عملاء اشتروا</div>'}</div>
+  <div class="pn"><h3>↩️ عملاء اشتروا ولغوا</h3>${cancellers.length?`<div class="tbw"><table class="tb"><tr><th>الاسم</th><th>الموبايل</th><th>طلبات ملغية</th><th>طلبات ماشية</th></tr>
+  ${cancellers.map(c=>`<tr><td>${esc(c.name)}</td><td dir="ltr" style="text-align:end">${esc(c.phone)}</td><td style="color:var(--bad)">${c.canc}</td><td>${c.n}</td></tr>`).join("")}</table></div>`:'<div class="empty">مفيش حد لغى طلب</div>'}</div>`}
+
 /* categories */
 function setCat(id,k,v){catOf(id)[k]=v.trim();dirty=true;renderSave()}
 function addCat(){const ar=$("#nca").value.trim(),en=$("#nce").value.trim();if(!ar||!en){toast("اكتب الاسم بالعربي والإنجليزي");return}cats.push({id:"c"+Date.now(),ar,en});dirty=true;render()}
@@ -195,7 +244,7 @@ function render(){
   if(!ready){$("#app").innerHTML=`<div class="login"><div class="lbox"><img src="logo.jpg" alt=""><h2>لوحة إدارة Cookies Accessories</h2><p class="mut">سجّل دخولك لإدارة المنتجات</p>
   <input id="rp" placeholder="اسم الريبو: username/repo" value="${esc(REPO)}" dir="ltr" autocomplete="off"><input id="tk" type="password" placeholder="GitHub Token (github_pat_...)" value="${esc(tok)}" autocomplete="off"><p id="le" style="color:var(--bad);font-weight:700;font-size:.9rem">${esc(lerr)}</p>
   <button class="btn" id="lb" onclick="login()">دخول</button><p class="mut">التوكن بيتخزن في متصفحك إنت بس.</p></div></div>`;return}
-  const nav=[["dash","📊","الرئيسية"],["products","💍","المنتجات"],["orders","🧾","الطلبات"],["cats","🗂️","الأقسام"]].map(n=>`<button class="nv ${view===n[0]?"on":""}" onclick="go('${n[0]}')"><span>${n[1]}</span><span>${n[2]}</span></button>`).join("");
+  const nav=[["dash","📊","الرئيسية"],["products","💍","المنتجات"],["orders","🧾","الطلبات"],["stats","📈","الإحصائيات"],["cats","🗂️","الأقسام"]].map(n=>`<button class="nv ${view===n[0]?"on":""}" onclick="go('${n[0]}')"><span>${n[1]}</span><span>${n[2]}</span></button>`).join("");
   let body="",title="";
   if(view==="dash"){title="نظرة عامة";const n=s=>products.filter(p=>p.status===s).length;
     body=`<div class="stats"><div class="st"><small>إجمالي المنتجات</small><b>${products.length}</b></div><div class="st"><small>متوفر</small><b style="color:var(--ok)">${n("in")}</b></div><div class="st"><small>قريبًا</small><b style="color:var(--warn)">${n("soon")}</b></div><div class="st"><small>المخزون خلص</small><b style="color:var(--bad)">${n("out")}</b></div></div>
@@ -205,14 +254,16 @@ function render(){
   if(view==="products"){title="المنتجات";
     body=`<div class="tool"><input placeholder="🔍 ابحث في المنتجات" value="${esc(pq)}" oninput="pq=this.value;plist()"><select onchange="pc=this.value;plist()"><option value="all">كل الأقسام</option>${cats.map(c=>`<option value="${esc(c.id)}" ${pc===c.id?"selected":""}>${esc(c.ar)}</option>`).join("")}</select><button class="btn" onclick="openP()">+ إضافة منتج</button></div><div id="pl"></div>`}
   if(view==="orders"){title="الطلبات";body='<div id="ob"></div>'}
+  if(view==="stats"){title="الإحصائيات";body='<div id="sb"></div>'}
   if(view==="cats"){title="الأقسام";
     body=`<p class="mut" style="margin-bottom:14px">الأقسام اللي بتظهر كفلاتر في الموقع، بالعربي والإنجليزي.</p><div class="cg">${cats.map(c=>`<div class="cat"><input value="${esc(c.ar)}" data-i="${esc(c.id)}" onchange="setCat(this.dataset.i,'ar',this.value)" placeholder="بالعربي"><input value="${esc(c.en)}" dir="ltr" data-i="${esc(c.id)}" onchange="setCat(this.dataset.i,'en',this.value)" placeholder="English"><div class="acts"><span class="mut">${products.filter(p=>p.cat===c.id).length} منتج</span><span class="sp" style="flex:1"></span><button class="btn r sm" data-i="${esc(c.id)}" onclick="delCat(this.dataset.i)">حذف القسم</button></div></div>`).join("")}
     <div class="cat"><b>+ قسم جديد</b><input id="nca" placeholder="بالعربي، مثلًا إسورة"><input id="nce" dir="ltr" placeholder="English, e.g. Pendants"><button class="btn sm" onclick="addCat()">إضافة</button></div></div>`}
-  $("#app").innerHTML=`<div class="shell"><aside class="side"><div class="brand"><img src="logo.jpg" alt=""><span class="lat">Cookies Admin</span></div>${nav}<div class="sp"></div>
+  $("#app").innerHTML=`<div class="shell"><aside class="side"><div class="brand"><img src="logo.jpg" alt=""><span class="lat">Cookies Admin</span><small class="mut">v7</small></div>${nav}<div class="sp"></div>
   <a class="nv hm" style="text-decoration:none" href="index.html" target="_blank"><span>🌐</span><span>عرض الموقع</span></a><button class="nv hm" onclick="logout()"><span>🚪</span><span>خروج</span></button></aside>
   <main><div class="top"><h1>${title}</h1><div class="acts"><a class="btn o sm" style="text-decoration:none" href="index.html" target="_blank">🌐 الموقع</a><button class="btn o sm" onclick="logout()">خروج</button></div></div>${body}</main></div>${pm?pform():""}`;
   if(view==="products")plist();
   if(view==="orders")loadOrders(false);
+  if(view==="stats")loadStats();
   renderSave();
 }
 (async()=>{if(tok&&await load()){render();if(OU&&okey)loadOrders(true)}else render()})();

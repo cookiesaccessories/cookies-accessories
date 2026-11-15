@@ -461,6 +461,19 @@ fetch("products.json?v="+Date.now()).then(function(r){if(!r.ok)throw 0;return r.
     return {id:x.id||"p"+i,code:x.code||"CK-"+(i+1),ar:x.ar,en:x.en,cat:x.cat||x.type,mat:x.mat,price:x.price>0?+x.price:null,hp:x.showPrice===false,imgs:x.imgs&&x.imgs.length?x.imgs:(x.img?[x.img]:[]),status:x.status||"in"}});
 }).catch(function(){}).then(lang);
 lang();
+// عدّاد زيارات مجهول: رقم عشوائي للمتصفح مرة كل يوم، من غير أي بيانات شخصية. جهاز الأدمن ما بيتحسبش.
+(function(){
+  if(!OU)return;
+  try{
+    if(localStorage.getItem("ck_tok"))return;
+    var v=localStorage.getItem("ck_vid");
+    if(!v){v=Array.from(crypto.getRandomValues(new Uint8Array(12)),function(b){return (b%36).toString(36)}).join("");localStorage.setItem("ck_vid",v)}
+    var d=new Date().toISOString().slice(0,10);
+    if(localStorage.getItem("ck_vd")==d)return;
+    localStorage.setItem("ck_vd",d);
+    fetch(OU,{method:"POST",mode:"no-cors",body:JSON.stringify({t:"visit",vid:v})}).catch(function(){});
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
