@@ -33,6 +33,27 @@
   ],
   "products": [
     {
+      "id": "p1794781569859",
+      "code": "CK-DSLP9",
+      "ar": "سلاسل سيمبل",
+      "en": "Simple chains",
+      "price": 110,
+      "showPrice": true,
+      "cat": "Necklaces",
+      "mat": "steel",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794781569859-1794781611265-0.jpg",
+        "images/p1794781569859-1794781613158-1.jpg",
+        "images/p1794781569859-1794781615092-2.jpg",
+        "images/p1794781569859-1794781617042-3.jpg",
+        "images/p1794781569859-1794781618788-4.jpg",
+        "images/p1794781569859-1794781620522-5.jpg"
+      ],
+      "img": "images/p1794781569859-1794781611265-0.jpg"
+    },
+    {
       "id": "p1794781451455",
       "code": "CK-BLHZC",
       "ar": "اساور تعبان",
