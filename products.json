@@ -28,6 +28,26 @@
   ],
   "products": [
     {
+      "id": "p1794780561947",
+      "code": "CK-U2KY5",
+      "ar": "انسيالات فصوص",
+      "en": "gemstone bracelets",
+      "price": 150,
+      "showPrice": true,
+      "cat": "Bracelets",
+      "mat": "steel",
+      "status": "in",
+      "hidden": false,
+      "imgs": [
+        "images/p1794780561947-1794780563364-0.jpg",
+        "images/p1794780561947-1794780565491-1.jpg",
+        "images/p1794780561947-1794780567140-2.jpg",
+        "images/p1794780561947-1794780569187-3.jpg",
+        "images/p1794780561947-1794780571036-4.jpg"
+      ],
+      "img": "images/p1794780561947-1794780563364-0.jpg"
+    },
+    {
       "id": "p1794779956250",
       "code": "CK-3PN8K",
       "ar": "سلسلة العذراء والصليب",
