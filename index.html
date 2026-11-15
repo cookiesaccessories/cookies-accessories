@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cookies Accessories</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'">
 <link rel="icon" href="logo.jpg">
 <script src="config.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Cormorant+Garamond:wght@500;600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
@@ -180,6 +181,20 @@ h2.rv.in::after{width:56px}
 #pdm{cursor:pointer}
 @media (max-width:860px){.hero{grid-template-columns:1fr;gap:1.5rem;padding-top:2.5rem;text-align:center}.lead{margin-inline:auto}.ctas{justify-content:center}.hl{order:2}nav{display:none}.mat{padding:1.2rem}.mat .ic{width:60px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.card,.rv{opacity:1;transform:none}}
+.mats{grid-template-columns:1fr 1fr 1fr}
+.mat.all{background:var(--soft)}
+.mat.all .ic2{font-size:2.2rem;color:var(--gold);flex:none;line-height:1}
+.acts2{display:grid;gap:.45rem;margin-top:.6rem}
+.acts2 .add{width:100%;padding:.45rem .9rem}
+.add.buy{background:var(--gold);color:#fff}
+.add.buy:hover{background:#c92f6b;border-color:#c92f6b}
+.link{background:none;border:0;color:var(--gold);text-decoration:underline;font:inherit;cursor:pointer;padding:0}
+.cancelb{color:#d6336c;border-color:#d6336c}
+.mag{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.srch span{display:flex;color:var(--mute)}
+#sbtn{display:flex;align-items:center;padding:.35rem .7rem}
+#sbtn .mag{width:17px;height:17px}
+@media (max-width:860px){.mats{grid-template-columns:1fr 1fr}.mat.all{grid-column:1/-1;padding:.8rem 1.2rem}.mat.all .ic2{display:none}}
 </style>
 </head>
 <body>
@@ -192,7 +207,7 @@ h2.rv.in::after{width:56px}
   <a class="brand" href="#top"><img src="logo.jpg" alt="Cookies Accessories logo">COOKIES</a>
   <nav><a href="#shop" data-t="nShop"></a><a href="#about" data-t="nAbout"></a><a href="#contact" data-t="nContact"></a></nav>
   <div class="tools">
-    <button class="pill" id="sbtn" aria-label="Search">🔍</button>
+    <button class="pill" id="sbtn" aria-label="Search"><svg class="mag" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
     <div class="dd" id="dd">
       <button class="pill" id="ddb" aria-haspopup="true" aria-expanded="false"><span data-t="langLabel"></span> ▾</button>
       <div class="menu"><button data-l="ar">العربية</button><button data-l="en">English</button></div>
@@ -217,8 +232,9 @@ h2.rv.in::after{width:56px}
 
 <section id="shop">
   <h2 class="disp rv" data-t="shop"></h2>
-  <div class="srch"><span aria-hidden="true">🔍</span><input id="q" type="search" autocomplete="off"></div>
+  <div class="srch"><span aria-hidden="true"><svg class="mag" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span><input id="q" type="search" autocomplete="off"></div>
   <div class="mats">
+    <button class="mat all" data-m="" aria-pressed="true"><div><b data-t="all"></b><span data-t="allD"></span></div><span class="ic2" aria-hidden="true">✦</span></button>
     <button class="mat gold" data-m="gold" aria-pressed="false"><div><b data-t="gold"></b><span data-t="goldD"></span></div><svg viewBox="0 0 100 100" class="ic" aria-hidden="true"><circle cx="50" cy="62" r="22" stroke="url(#gold)" fill="none" stroke-width="5"/><polygon points="50,10 63,25 50,40 37,25" fill="url(#gold)"/></svg></button>
     <button class="mat steel" data-m="steel" aria-pressed="false"><div><b data-t="steel"></b><span data-t="steelD"></span></div><svg viewBox="0 0 100 100" class="ic" aria-hidden="true"><path d="M16 18Q50 96 84 18" stroke="url(#steel)" fill="none" stroke-width="5" stroke-linecap="round" stroke-dasharray="7 4"/><circle cx="50" cy="66" r="8" fill="url(#steel)"/></svg></button>
   </div>
@@ -260,6 +276,8 @@ yourCart:"سلتك",total:"الإجمالي",order:"اطلب على ماسنجر
 hi:"أهلاً كوكيز أكسسوارز، عايز أطلب:",tot:"الإجمالي",copied:"تم نسخ طلبك. الصقه في محادثة ماسنجر.",out:"المخزون خلص",soon:"قريبًا"}};
 Object.assign(T.en,{search:"Search by name or code",code:"Code",ask:"Ask for price",np2:"Price on request",cartH:"Shopping cart",yourName:"Your name",yourPhone:"Phone number (WhatsApp)",payH:"Payment method",cod:"Cash on delivery",dep:"Requires at least a 50% deposit",insta:"InstaPay",finish:"Complete order",close:"Close",need:"Please enter your name and phone number",doneH:"Your order is registered",yourCode:"Your order code",goMsn:"Continue on Messenger",copyM:"Copy message",note:"We copied the message. If Messenger does not fill it in, paste it in the chat.",noRes:"No results.",asked:"Message copied. Paste it in the chat.",cEmpty:"Your cart is empty."});
 Object.assign(T.ar,{search:"ابحث بالاسم أو الكود",code:"الكود",ask:"اسأل عن السعر",np2:"السعر عند السؤال",cartH:"سلة المشتريات",yourName:"الاسم",yourPhone:"رقم الموبايل (واتساب)",payH:"طريقة الدفع",cod:"كاش عند الاستلام",dep:"لازم ديبوست 50% على الأقل",insta:"إنستا باي",finish:"إتمام الشراء",close:"إغلاق",need:"اكتب اسمك ورقم موبايلك",doneH:"تم تسجيل طلبك",yourCode:"كود الطلب",goMsn:"كمّل على ماسنجر",copyM:"نسخ الرسالة",note:"نسخنا الرسالة. لو ماسنجر مكتبهاش لوحده، الصقها في المحادثة.",noRes:"مفيش نتايج.",asked:"تم نسخ الرسالة. الصقها في المحادثة.",cEmpty:"السلة فاضية."});
+Object.assign(T.en,{allD:"Everything",buy:"Buy now",npNote:"Items without a price will be priced on Messenger.",cancelBtn:"Cancel order",cfm:"Cancel this order?",cDone:"Order cancelled",cTell:"Please tell us on Messenger too, so we stop preparing it.",tellUs:"Tell us on Messenger",cNo:"This order is already being processed. Please contact us on Messenger.",cWait:"Your order is still being registered. Try again in a few seconds.",cErr:"Connection problem. Please try again.",lastH:"Your last order"});
+Object.assign(T.ar,{allD:"كل المنتجات",buy:"اشتري الآن",npNote:"الأصناف اللي من غير سعر هيتحدد سعرها على ماسنجر.",cancelBtn:"إلغاء الطلبية",cfm:"تلغي الطلبية دي؟",cDone:"تم إلغاء الطلبية",cTell:"بلّغنا على ماسنجر كمان علشان نوقف تجهيزها.",tellUs:"بلّغنا على ماسنجر",cNo:"الطلبية دي بقت قيد التنفيذ ومينفعش تتلغي من هنا. كلمنا على ماسنجر.",cWait:"الطلبية لسه بتتسجل، جرّب كمان ثواني.",cErr:"فيه مشكلة في الاتصال، جرّب تاني.",lastH:"آخر طلبية ليك"});
 var OU=(window.CONFIG&&CONFIG.ORDERS_URL)||"";
 var CATS=[{id:"Rings",en:"Rings",ar:"خواتم"},{id:"Necklaces",en:"Necklaces",ar:"سلاسل"},{id:"Earrings",en:"Earrings",ar:"حلقان"},{id:"Bracelets",en:"Bracelets",ar:"أساور"},{id:"Anklets",en:"Anklets",ar:"خلاخيل"}];
 function mk(i,ar,en,cat,price,mat){return {id:"d"+i,code:"CK-D00"+i,ar:ar,en:en,cat:cat,mat:mat,price:price,imgs:[],status:"in"}}
@@ -289,8 +307,8 @@ function icon(k,m){
 }
 function words(el,txt){el.innerHTML=txt.split(" ").map(function(w,i){return '<span style="--d:'+i+'">'+w+"</span>"}).join(" ")}
 function showToast(m){var x=$("toast");x.textContent=m;x.classList.add("on");setTimeout(function(){x.classList.remove("on")},3500)}
-function priceHtml(p){return p.price?'<b>'+p.price+' '+t("cur")+'</b>':'<span class="np">'+t("np2")+'</span>'}
-function actHtml(p){return p.status!="in"?'<small>'+t(p.status)+'</small>':p.price?'<button class="add" data-a="'+p.id+'">'+t("add")+'</button>':'<button class="add" data-k="'+p.id+'">'+t("ask")+'</button>'}
+function priceHtml(p){return p.price&&!p.hp?'<b>'+p.price+' '+t("cur")+'</b>':'<span class="np">'+t("np2")+'</span>'}
+function actHtml(p){return p.status!="in"?'<small>'+t(p.status)+'</small>':'<div class="acts2"><button class="add" data-a="'+p.id+'">'+t("add")+'</button><button class="add buy" data-b="'+p.id+'">'+t("buy")+'</button></div>'}
 function match(p){var q=qs.trim().toLowerCase();return !q||(p.ar+" "+p.en+" "+p.code).toLowerCase().indexOf(q)>-1}
 var slT=[];
 function startSl(){
@@ -306,7 +324,7 @@ function render(){
   var n=0,h=P.map(function(p){
     if(!((!mat||p.mat==mat)&&(ty=="All"||p.cat==ty)&&match(p)))return "";
     var im=p.imgs[0],c=p.imgs.length;
-    return '<article class="card" style="--i:'+(n++)+'"><div class="pic '+p.mat+'" data-v="'+p.id+'">'+(c?p.imgs.map(function(x,j){return '<img class="ph sl'+(j?'':' on')+'" src="'+esc(x)+'" alt="'+esc(p[L])+'" loading="lazy">'}).join(""):icon(p.cat,p.mat))+'<span class="bd">'+t(p.mat)+'</span>'+(c>1?'<span class="dots">'+p.imgs.map(function(x,j){return '<i'+(j?'':' class="on"')+'></i>'}).join("")+'</span>':'')+'</div><div class="inf"><h3>'+esc(p[L])+'</h3><small>'+cn(p.cat)+'</small> <span class="code">'+esc(p.code)+'</span><div class="pr">'+priceHtml(p)+actHtml(p)+'</div></div></article>'}).join("");
+    return '<article class="card" style="--i:'+(n++)+'"><div class="pic '+p.mat+'" data-v="'+p.id+'">'+(c?p.imgs.map(function(x,j){return '<img class="ph sl'+(j?'':' on')+'" src="'+esc(x)+'" alt="'+esc(p[L])+'" loading="lazy">'}).join(""):icon(p.cat,p.mat))+'<span class="bd">'+t(p.mat)+'</span>'+(c>1?'<span class="dots">'+p.imgs.map(function(x,j){return '<i'+(j?'':' class="on"')+'></i>'}).join("")+'</span>':'')+'</div><div class="inf"><h3>'+esc(p[L])+'</h3><small>'+cn(p.cat)+'</small> <span class="code">'+esc(p.code)+'</span><div class="pr">'+priceHtml(p)+'</div>'+actHtml(p)+'</div></article>'}).join("");
   $("grid").innerHTML=h||'<p class="none">'+t(qs?"noRes":"none")+'</p>';
   reveal();startSl();
 }
@@ -315,11 +333,11 @@ function setPd(k){pdK=k;var m=$("pdm");if(!m)return;m.style.opacity=0;setTimeout
 function stopPd(){clearInterval(pdT);pdT=null}
 function openPd(id){
   var p=byId(id);if(!p)return;stopPd();pdI=p.imgs;pdK=0;var im=pdI;
-  $("pdb").innerHTML='<div class="gal pic '+p.mat+'">'+(im.length?'<img id="pdm" src="'+esc(im[0])+'" alt="" style="transition:opacity .18s">':icon(p.cat,p.mat))+'</div>'+(im.length>1?'<div class="th">'+im.map(function(s,j){return '<img src="'+esc(s)+'" data-g="'+j+'" class="'+(j?"":"on")+'" alt="">'}).join("")+'</div>':'')+'<h3>'+esc(p[L])+'</h3><p class="code">'+t("code")+': '+esc(p.code)+'</p><p>'+cn(p.cat)+' · '+t(p.mat)+'</p><p>'+priceHtml(p)+'</p>'+(p.status!="in"?'<p class="np">'+t(p.status)+'</p>':p.price?'<button class="btn full" data-a="'+p.id+'">'+t("add")+'</button>':'<button class="btn full" data-k="'+p.id+'">'+t("ask")+'</button>')+'<button class="btn ghost full" data-x="pd">'+t("close")+'</button>';
+  $("pdb").innerHTML='<div class="gal pic '+p.mat+'">'+(im.length?'<img id="pdm" src="'+esc(im[0])+'" alt="" style="transition:opacity .18s">':icon(p.cat,p.mat))+'</div>'+(im.length>1?'<div class="th">'+im.map(function(s,j){return '<img src="'+esc(s)+'" data-g="'+j+'" class="'+(j?"":"on")+'" alt="">'}).join("")+'</div>':'')+'<h3>'+esc(p[L])+'</h3><p class="code">'+t("code")+': '+esc(p.code)+'</p><p>'+cn(p.cat)+' · '+t(p.mat)+'</p><p>'+priceHtml(p)+'</p>'+(p.status!="in"?'<p class="np">'+t(p.status)+'</p>':'<button class="btn ghost full" data-a="'+p.id+'">'+t("add")+'</button><button class="btn full" data-b="'+p.id+'">'+t("buy")+'</button>'+(p.price&&!p.hp?'':'<p class="np"><button class="link" data-k="'+p.id+'">'+t("ask")+'</button></p>'))+'<button class="btn ghost full" data-x="pd">'+t("close")+'</button>';
   $("pd").classList.add("on");
   if(im.length>1&&!RM)pdT=setInterval(function(){setPd((pdK+1)%pdI.length)},4000);
 }
-function closeOv(id){$(id).classList.remove("on");if(id=="pd")stopPd();if(id=="co")co.done=null}
+function closeOv(id){$(id).classList.remove("on");if(id=="pd")stopPd();if(id=="co"){co.done=null;co.cancelled=null}}
 function lang(){
   document.documentElement.lang=L;document.documentElement.dir=L=="ar"?"rtl":"ltr";
   document.querySelectorAll("[data-t]").forEach(function(e){if(e.id!="h1")e.textContent=t(e.dataset.t)});
@@ -329,39 +347,65 @@ function lang(){
 }
 /* cart + checkout */
 function rows(){return cart.map(function(c){return {p:byId(c.id),q:c.q}}).filter(function(r){return r.p})}
-function total(){return rows().reduce(function(a,r){return a+r.q*r.p.price},0)}
+function total(){return rows().reduce(function(a,r){return a+(r.p.price&&!r.p.hp?r.q*r.p.price:0)},0)}
 function addCart(id){var c=cart.find(function(x){return x.id==id});if(c)c.q++;else cart.push({id:id,q:1});draw()}
 function draw(){
   $("count").textContent=rows().reduce(function(a,r){return a+r.q},0);
   ["msn2","msn3"].forEach(function(i){$(i).href="https://m.me/"+PAGE});
   if($("co").classList.contains("on"))drawCo();
 }
+function hasNP(){return rows().some(function(r){return !(r.p.price&&!r.p.hp)})}
+function totTxt(){var v=total();return (!v&&hasNP())?t("np2"):v+" "+t("cur")}
+function lastOrder(){try{var o=JSON.parse(localStorage.getItem("ck_last")||"null");if(o&&(o.name||o.phone)){o={code:o.code,status:o.status};saveLast(o)}return o&&o.status=="pending"?o:null}catch(e){return null}}
+function saveLast(o){try{localStorage.setItem("ck_last",JSON.stringify(o))}catch(e){}}
+function msnLink(m){return "https://m.me/"+PAGE+"?text="+encodeURIComponent(m)}
+var LN="━━━━━━━━━━━━━━";
+function cancelMsg(o){var ar=L=="ar";return "❌ "+(ar?"طلب إلغاء":"Cancel request")+"\n"+LN+"\n🔖 "+(ar?"كود الطلب: ":"Order code: ")+o.code}
 function drawCo(){
-  if(co.done){
-    $("cob").innerHTML='<div class="ok"><h3>✅ '+t("doneH")+'</h3><p class="np">'+t("yourCode")+'</p><div class="cd">'+esc(co.done.code)+'</div><div class="mp">'+esc(co.done.m)+'</div><a class="btn msn full" target="_blank" rel="noopener" href="https://m.me/'+PAGE+'?text='+encodeURIComponent(co.done.m)+'">'+t("goMsn")+'</a><button class="btn ghost full" data-cp="1">'+t("copyM")+'</button><p class="np">'+t("note")+'</p><button class="btn ghost full" data-x="co">'+t("close")+'</button></div>';
+  var r=rows(),lo=lastOrder();
+  if(co.cancelled){
+    $("cob").innerHTML='<div class="ok"><h3>✅ '+t("cDone")+'</h3><div class="cd">'+esc(co.cancelled.code)+'</div><p class="np">'+t("cTell")+'</p><a class="btn msn full" target="_blank" rel="noopener" href="'+msnLink(cancelMsg(co.cancelled))+'">'+t("tellUs")+'</a><button class="btn ghost full" data-x="co">'+t("close")+'</button></div>';
     return;
   }
-  var r=rows(),bn=co.bad&&!co.name.trim()?" bad":"",bp=co.bad&&co.phone.replace(/\D/g,"").length<8?" bad":"";
-  $("cob").innerHTML='<h3>🛒 '+t("cartH")+'</h3>'+(r.length?r.map(function(x){return '<div class="ci"><div><b>'+esc(x.p[L])+'</b><span class="code">'+esc(x.p.code)+'</span><div class="np">'+x.p.price+' '+t("cur")+'</div></div><div class="qty"><button data-d="'+x.p.id+'" aria-label="-">−</button><b>'+x.q+'</b><button data-u="'+x.p.id+'" aria-label="+">+</button></div></div>'}).join("")+
-   '<div class="tot"><span>'+t("total")+'</span><span>'+total()+' '+t("cur")+'</span></div><input class="fld'+bn+'" id="cfn" placeholder="'+t("yourName")+'" value="'+esc(co.name)+'" autocomplete="name"><input class="fld'+bp+'" id="cfp" type="tel" inputmode="tel" placeholder="'+t("yourPhone")+'" value="'+esc(co.phone)+'" autocomplete="tel"><p class="np">'+t("payH")+'</p><div class="pays"><label><input type="radio" name="pay" value="cod"'+(co.pay=="cod"?" checked":"")+'><span>'+t("cod")+'<small>'+t("dep")+'</small></span></label><label><input type="radio" name="pay" value="insta"'+(co.pay=="insta"?" checked":"")+'><span>'+t("insta")+'</span></label></div><button class="btn full" data-fin="1">'+t("finish")+'</button>':'<p class="none">'+t("cEmpty")+'</p>')+'<button class="btn ghost full" data-x="co">'+t("close")+'</button>';
+  if(co.done){
+    $("cob").innerHTML='<div class="ok"><h3>✅ '+t("doneH")+'</h3><p class="np">'+t("yourCode")+'</p><div class="cd">'+esc(co.done.code)+'</div><div class="mp">'+esc(co.done.m)+'</div><a class="btn msn full" target="_blank" rel="noopener" href="'+msnLink(co.done.m)+'">'+t("goMsn")+'</a><button class="btn ghost full" data-cp="1">'+t("copyM")+'</button><p class="np">'+t("note")+'</p><button class="btn ghost full cancelb" data-cx="1">'+t("cancelBtn")+'</button><button class="btn ghost full" data-x="co">'+t("close")+'</button></div>';
+    return;
+  }
+  var bn=co.bad&&!co.name.trim()?" bad":"",bp=co.bad&&co.phone.replace(/\D/g,"").length<8?" bad":"";
+  $("cob").innerHTML='<h3>🛒 '+t("cartH")+'</h3>'+(r.length?r.map(function(x){return '<div class="ci"><div><b>'+esc(x.p[L])+'</b><span class="code">'+esc(x.p.code)+'</span><div class="np">'+(x.p.price&&!x.p.hp?x.p.price+' '+t("cur"):t("np2"))+'</div></div><div class="qty"><button data-d="'+x.p.id+'" aria-label="-">−</button><b>'+x.q+'</b><button data-u="'+x.p.id+'" aria-label="+">+</button></div></div>'}).join("")+
+   '<div class="tot"><span>'+t("total")+'</span><span>'+totTxt()+'</span></div>'+(hasNP()?'<p class="np">'+t("npNote")+'</p>':'')+'<input class="fld'+bn+'" id="cfn" placeholder="'+t("yourName")+'" value="'+esc(co.name)+'" autocomplete="name"><input class="fld'+bp+'" id="cfp" type="tel" inputmode="tel" placeholder="'+t("yourPhone")+'" value="'+esc(co.phone)+'" autocomplete="tel"><p class="np">'+t("payH")+'</p><div class="pays"><label><input type="radio" name="pay" value="cod"'+(co.pay=="cod"?" checked":"")+'><span>'+t("cod")+'<small>'+t("dep")+'</small></span></label><label><input type="radio" name="pay" value="insta"'+(co.pay=="insta"?" checked":"")+'><span>'+t("insta")+'</span></label></div><button class="btn full" data-fin="1">'+t("finish")+'</button>'
+   :'<p class="none">'+t("cEmpty")+'</p>'+(lo?'<div class="mp"><b>'+t("lastH")+': '+esc(lo.code)+'</b></div><button class="btn ghost full cancelb" data-cx="1">'+t("cancelBtn")+'</button>':''))+'<button class="btn ghost full" data-x="co">'+t("close")+'</button>';
 }
 function orderMsg(o){
-  var ar=L=="ar",cur=t("cur");
-  return (ar?"مرحبًا Cookies Accessories، أنا ":"Hi Cookies Accessories, I am ")+o.name+"\n"+(ar?"الموبايل: ":"Phone: ")+o.phone+"\n"+(ar?"الدفع: ":"Payment: ")+t(o.pay=="cod"?"cod":"insta")+"\n"+(ar?"كود الطلب: ":"Order code: ")+o.code+"\n"+o.items.map(function(i){return "• "+i[L]+" ("+i.c+") × "+i.q+" = "+i.q*i.p+" "+cur}).join("\n")+"\n"+(ar?"الإجمالي: ":"Total: ")+o.total+" "+cur;
+  var ar=L=="ar",cur=t("cur"),np=o.items.some(function(i){return !(i.p&&!i.h)});
+  var items=o.items.map(function(i,n){return (n+1)+") "+i[L]+" ("+i.c+")\n    "+(ar?"الكمية: ":"Qty: ")+i.q+(i.p&&!i.h?" × "+i.p+" = "+i.q*i.p+" "+cur:" — "+t("np2"))}).join("\n");
+  return "🛍️ "+(ar?"طلب جديد من Cookies Accessories":"New order from Cookies Accessories")+"\n"+LN+"\n👤 "+(ar?"الاسم: ":"Name: ")+o.name+"\n📞 "+(ar?"الموبايل: ":"Phone: ")+o.phone+"\n💳 "+(ar?"الدفع: ":"Payment: ")+t(o.pay=="cod"?"cod":"insta")+(o.pay=="cod"?" ("+t("dep")+")":"")+"\n🔖 "+(ar?"كود الطلب: ":"Order code: ")+o.code+"\n"+LN+"\n"+items+"\n"+LN+"\n💰 "+(ar?"الإجمالي: ":"Total: ")+(o.total?o.total+" "+cur:(np?t("np2"):"0 "+cur))+(np&&o.total?(ar?" + أصناف سعرها يتحدد على ماسنجر":" + items priced on Messenger"):"");
 }
 function finish(){
   var nm=co.name.trim(),ph=co.phone.replace(/\s/g,"");
   if(nm.length<2||ph.replace(/\D/g,"").length<8){co.bad=true;drawCo();showToast(t("need"));return}
-  var r=rows(),o={code:newCode(),name:nm,phone:ph,pay:co.pay,lang:L,total:total(),items:r.map(function(x){return {c:x.p.code,ar:x.p.ar,en:x.p.en,q:x.q,p:x.p.price}})};
+  var r=rows(),o={code:newCode(),name:nm,phone:ph,pay:co.pay,lang:L,total:total(),items:r.map(function(x){return {c:x.p.code,ar:x.p.ar,en:x.p.en,q:x.q,p:x.p.price||null,h:x.p.hp?1:0}})};
   if(OU){try{fetch(OU,{method:"POST",mode:"no-cors",body:JSON.stringify(o)}).catch(function(){})}catch(e){}}
-  var m=orderMsg(o);copy(m);
+  var m=orderMsg(o);copy(m);saveLast({code:o.code,status:"pending"});
   co.done={code:o.code,m:m};cart=[];draw();spark(innerWidth/2,innerHeight/3,18,150);
 }
-function ask(id){
-  var p=byId(id),ar=L=="ar",m=(ar?"مرحبًا Cookies Accessories، عايز أعرف سعر:\n":"Hi Cookies Accessories, I would like to know the price of:\n")+p[L]+"\n"+(ar?"كود المنتج: ":"Product code: ")+p.code;
-  copy(m);
-  showToast(t("asked"));window.open("https://m.me/"+PAGE+"?text="+encodeURIComponent(m),"_blank");
+function doneCancel(lo){lo.status="cancelled";saveLast(lo);co.done=null;co.cancelled=lo;drawCo()}
+function cancelOrder(){
+  var lo=lastOrder();if(!lo||!confirm(t("cfm")))return;
+  if(!OU){doneCancel(lo);return}
+  fetch(OU+"?action=cancel&code="+encodeURIComponent(lo.code)).then(function(r){return r.json()}).then(function(j){
+    if(j.ok)doneCancel(lo);else showToast(t(j.error=="notfound"?"cWait":"cNo"));
+  }).catch(function(){showToast(t("cErr"))});
 }
+function buyNow(id){
+  if(!cart.find(function(x){return x.id==id}))cart.push({id:id,q:1});
+  closeOv("pd");co.bad=false;co.done=null;co.cancelled=null;$("co").classList.add("on");draw();
+}
+function ask(id){
+  var p=byId(id),ar=L=="ar",m="🏷️ "+(ar?"سؤال عن سعر":"Price question")+"\n"+LN+"\n"+(ar?"المنتج: ":"Product: ")+p[L]+"\n🔖 "+(ar?"كود المنتج: ":"Product code: ")+p.code;
+  copy(m);showToast(t("asked"));window.open(msnLink(m),"_blank");
+}
+function toGrid(){setTimeout(function(){$("cats").scrollIntoView({behavior:RM?"auto":"smooth",block:"start"})},60)}
 function spark(x,y,n,d){
   if(RM)return;
   for(var k=0;k<n;k++){var s=document.createElement("div");s.className="fly";s.style.cssText="left:"+x+"px;top:"+y+"px;font-size:"+(9+Math.random()*7)+"px";s.textContent="✦";document.body.appendChild(s);
@@ -386,9 +430,11 @@ document.addEventListener("click",function(e){
   if(!b){var v=tg.closest("[data-v]");if(v)openPd(v.dataset.v);return}
   var d=b.dataset;
   if(d.c){ty=d.c;render()}
-  if(d.m){mat=mat==d.m?"":d.m;render()}
+  if(d.m!==undefined){mat=d.m;render();toGrid()}
   if(d.a){addCart(d.a);fly(b)}
   if(d.k)ask(d.k);
+  if(d.b)buyNow(d.b);
+  if(d.cx)cancelOrder();
   if(d.u)addCart(d.u);
   if(d.d){var c=cart.find(function(x){return x.id==d.d});if(c){c.q--;if(c.q<1)cart.splice(cart.indexOf(c),1)}draw()}
   if(d.fin)finish();
@@ -404,7 +450,7 @@ document.addEventListener("input",function(e){
 });
 document.addEventListener("keydown",function(e){if(e.key=="Escape")document.querySelectorAll(".ov.on").forEach(function(o){closeOv(o.id)})});
 $("ddb").onclick=function(e){e.stopPropagation();var o=$("dd").classList.toggle("open");this.setAttribute("aria-expanded",o)};
-$("open").onclick=function(){co.bad=false;drawCo();$("co").classList.add("on")};
+$("open").onclick=function(){co.bad=false;co.done=null;co.cancelled=null;drawCo();$("co").classList.add("on")};
 $("sbtn").onclick=function(){$("q").scrollIntoView({behavior:"smooth",block:"center"});setTimeout(function(){$("q").focus()},500)};
 $("q").oninput=function(){qs=this.value;render()};
 // load products from products.json (the admin writes it); keep the defaults if it cannot be read
@@ -412,7 +458,7 @@ fetch("products.json?v="+Date.now()).then(function(r){if(!r.ok)throw 0;return r.
   var a=Array.isArray(d)?d:(d.products||[]);
   if(!Array.isArray(d)&&d.categories&&d.categories.length)CATS=d.categories;
   P=a.filter(function(x){return !x.hidden}).map(function(x,i){
-    return {id:x.id||"p"+i,code:x.code||"CK-"+(i+1),ar:x.ar,en:x.en,cat:x.cat||x.type,mat:x.mat,price:x.price>0?+x.price:null,imgs:x.imgs&&x.imgs.length?x.imgs:(x.img?[x.img]:[]),status:x.status||"in"}});
+    return {id:x.id||"p"+i,code:x.code||"CK-"+(i+1),ar:x.ar,en:x.en,cat:x.cat||x.type,mat:x.mat,price:x.price>0?+x.price:null,hp:x.showPrice===false,imgs:x.imgs&&x.imgs.length?x.imgs:(x.img?[x.img]:[]),status:x.status||"in"}});
 }).catch(function(){}).then(lang);
 lang();
 </script>
